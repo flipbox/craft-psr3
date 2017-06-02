@@ -1,9 +1,13 @@
 {
   "name": "flipboxdigital/craft-psr3",
   "description": "PSR3 Logger for Craft CMS",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "keywords": [
-    "psr-3"
+    "psr-3",
+    "psr3",
+    "craft",
+    "craft cms",
+    "yii2"
   ],
   "license": "MIT",
   "authors": [

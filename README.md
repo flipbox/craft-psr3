@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/flipbox/craft-psr3/master.svg?style=flat-square)](https://travis-ci.org/flipbox/craft-psr3)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/flipbox/craft-psr3.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipbox/craft-psr3/code-structure)
 [![Quality Score](https://img.shields.io/scrutinizer/g/flipbox/craft-psr3.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipbox/craft-psr3)
-[![Total Downloads](https://img.shields.io/packagist/dt/flipboxdigital/craft-psr3.svg?style=flat-square)](https://packagist.org/packages/flipbox/craft-psr3)
+[![Total Downloads](https://img.shields.io/packagist/dt/flipboxdigital/craft-psr3.svg?style=flat-square)](https://packagist.org/packages/flipboxdigital/craft-psr3)
 
 This package provides simple mechanism for PSR-3 logging via Craft CMS.
 

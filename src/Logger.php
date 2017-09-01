@@ -82,7 +82,7 @@ class Logger extends Component implements LoggerInterface
         // Resolve level
         $level = ArrayHelper::getValue($this->map, $level, $this->level);
 
-        $this->logger()->log(
+        $this->logger->log(
             $this->interpolate($message, $context),
             $level,
             $category

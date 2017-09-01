@@ -1,7 +1,7 @@
 {
   "name": "flipboxdigital/craft-psr3",
   "description": "PSR3 Logger for Craft CMS",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "psr-3",
     "psr3",

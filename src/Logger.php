@@ -29,6 +29,13 @@ class Logger extends Component implements LoggerInterface
     public $category = 'PSR-3';
 
     /**
+     * The logger
+     *
+     * @var null|YiiLogger
+     */
+    public $logger;
+
+    /**
      * The default level to use when an arbitrary level is used.
      *
      * @var string
@@ -52,6 +59,17 @@ class Logger extends Component implements LoggerInterface
     ];
 
     /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        if ($this->logger === null || !$this->logger instanceof YiiLogger) {
+            $this->logger = Craft::getLogger();
+        }
+        parent::init();
+    }
+
+    /**
      * Log a message, transforming from PSR3 to the closest Yii2.
      *
      * @inheritdoc
@@ -64,14 +82,8 @@ class Logger extends Component implements LoggerInterface
         // Resolve level
         $level = ArrayHelper::getValue($this->map, $level, $this->level);
 
-        // Prepare placeholders
-        $placeholders = [];
-        foreach ((array)$context as $name => $value) {
-            $placeholders['{' . $name . '}'] = $value;
-        }
-
-        Craft::getLogger()->log(
-            strtr($message, $placeholders),
+        $this->logger()->log(
+            $this->interpolate($message, $context),
             $level,
             $category
         );
@@ -139,5 +151,27 @@ class Logger extends Component implements LoggerInterface
     public function debug($message, array $context = [])
     {
         $this->log('debug', $message, $context);
+    }
+
+    /**
+     * Interpolates context values into the message placeholders.
+     *
+     * @param string $message
+     * @param array $context
+     * @return string
+     */
+    private function interpolate(string $message, array $context = [])
+    {
+        // build a replacement array with braces around the context keys
+        $replace = array();
+        foreach ($context as $key => $val) {
+            // check that the value can be casted to string
+            if (!is_array($val) && (!is_object($val) || method_exists($val, '__toString'))) {
+                $replace['{' . $key . '}'] = $val;
+            }
+        }
+
+        // interpolate replacement values into the message and return
+        return strtr($message, $replace);
     }
 }
